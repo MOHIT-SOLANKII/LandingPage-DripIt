@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* body {
+  @apply bg-gray-100;
+} */
+
+
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --bg: rgba(252, 252, 252, 1);
+  --black: rgba(0, 0, 0, 1);
+  --gray-100: rgba(229, 231, 235, 1);
+  --gray-200: rgba(209, 213, 219, 1);
+  --gray-25: rgba(249, 250, 251, 1);
+  --gray-300: rgba(156, 163, 175, 1);
+  --gray-400: rgba(107, 114, 128, 1);
+  --gray-50: rgba(243, 244, 246, 1);
+  --gray-500: rgba(75, 85, 99, 1);
+  --gray-600: rgba(55, 65, 81, 1);
+  --gray-700: rgba(31, 41, 55, 1);
+  --gray-800: rgba(17, 24, 39, 1);
+  --gray-900: rgba(3, 7, 18, 1);
+  --green: rgba(0, 145, 58, 1);
+  --red: rgba(198, 0, 0, 1);
+  --white: rgba(255, 255, 255, 1);
+}
+
+
+
+
