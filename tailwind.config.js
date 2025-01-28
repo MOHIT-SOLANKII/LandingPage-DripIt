@@ -21,6 +21,10 @@ export default {
         red: "var(--red)",
         white: "var(--white)",
       },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        Agraham : ["Agraham", "sans-serif"],
+      },
       animation: {
         fadeIn: "fadeIn 1s ease-in forwards",
         slideIn: "slideIn 1s ease-out forwards",

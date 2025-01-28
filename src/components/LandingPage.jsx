@@ -86,11 +86,11 @@ export const LandingPage = () => {
             className="relative"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-xl md:text-2xl text-[#b4b4b4]">
+            <span className="font-Agraham text-md md:text-2xl text-[#b4b4b4]">
               Drippit
             </span>
-            <span className="text-xl md:text-2xl text-black absolute top-0 left-0">
-              Drippit
+            <span className="font-Agraham text-md md:text-2xl text-black absolute top-0 left-0">
+              Dripp
             </span>
           </motion.div>
 
@@ -143,7 +143,7 @@ export const LandingPage = () => {
                 Find Your Drip.
               </motion.h2>
               <motion.h1 
-                className="text-4xl md:text-5xl tracking-wide"
+                className="font-Agraham text-xl md:text-3xl tracking-wide"
                 variants={fadeInUp}
               >
                 Swipe, Match, Slay.
@@ -203,27 +203,25 @@ export const LandingPage = () => {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="lg:flex-1 flex justify-center"
-          >
-            <div className="relative w-[280px] md:w-[320px] lg:w-[359px] h-[406px] md:h-[464px] lg:h-[522px] shadow-lg bg-[url(/main.png)] bg-cover">
-              <motion.img
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                src={iphone1}
-                alt="iPhone"
-                className="absolute top-1 md:top-1.5 left-0.5 w-[130px] md:w-[150px] lg:w-[166px] object-contain"
-              />
-              <motion.img
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                src={iphone2}
-                alt="iPhone"
-                className="absolute top-[52px] md:top-[60px] lg:top-[66px] left-[148px] md:left-[170px] lg:left-[189px] w-[130px] md:w-[150px] lg:w-[166px] object-contain"
-              />
-            </div>
-          </motion.div>
+         
+            <div className="w-[359px] h-[522px] relative">
+      <img
+        className="absolute w-[359px] h-[522px] top-0 left-0 object-cover"
+        alt="Main"
+        src='/iphone-frame.png'
+          />
+           <img
+        className="absolute w-[166px] h-[449px] top-[6px] left-[2px] object-cover"
+        alt="Iphone"
+        src='/iphone-1.png'
+          />
+          <img
+        className="absolute w-[166px] h-[449px] top-[66px] left-[190px] object-cover"
+        alt="Iphone"
+        src='/iphone-2.png'
+      />
+    </div>
+        
         </motion.div>
       </motion.section>
 
@@ -304,7 +302,7 @@ export const LandingPage = () => {
         <div className="max-w-xl mx-auto px-4 text-center">
           <motion.h2
             variants={fadeInUp}
-            className="text-gray-25 text-xl md:text-2xl mb-4 md:mb-6"
+            className="font-Agraham text-gray-25 text-xl md:text-2xl mb-4 md:mb-6"
           >
             Don't Miss Out on the Drip 💧
           </motion.h2>

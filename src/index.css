@@ -14,6 +14,18 @@
   }
 }
 
+@font-face {
+  font-family: Agraham;
+  src: url(./assets/Agraham.otf);
+}
+.Agraham {
+  font-family: Agraham;
+}
+
+/* body {
+  font-family: 'Agraham', sans-serif;
+} */
+
 :root {
   --bg: rgba(252, 252, 252, 1);
   --black: rgba(0, 0, 0, 1);
