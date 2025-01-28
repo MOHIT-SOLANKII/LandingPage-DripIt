@@ -146,7 +146,7 @@ export const LandingPage = () => {
                 className="text-4xl md:text-5xl tracking-wide"
                 variants={fadeInUp}
               >
-                Swipe, Match, Slay. 💧
+                Swipe, Match, Slay.
               </motion.h1>
             </div>
 
@@ -154,8 +154,7 @@ export const LandingPage = () => {
               variants={fadeInUp}
               className="text-gray-300 text-base md:text-lg tracking-wide md:tracking-wider leading-7"
             >
-              Drippit is where fashion meets swiping. Discover your style, one
-              match at a time.
+              Drippit is where fashion meets swiping discover your style one swipe at a time
             </motion.p>
 
             <motion.div 
