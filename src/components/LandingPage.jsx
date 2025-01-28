@@ -302,7 +302,7 @@ export const LandingPage = () => {
         <div className="max-w-xl mx-auto px-4 text-center">
           <motion.h2
             variants={fadeInUp}
-            className="font-Agraham text-gray-25 text-xl md:text-2xl mb-4 md:mb-6"
+            className="font-Agraham text-gray-25 text-md md:text-2xl mb-4 md:mb-6"
           >
             Don't Miss Out on the Drip 💧
           </motion.h2>
@@ -344,7 +344,7 @@ export const LandingPage = () => {
       >
         <motion.h2 
           whileHover={{ scale: 1.05 }}
-          className="text-xl md:text-2xl mb-6 md:mb-8"
+          className="text-md md:text-2xl mb-6 md:mb-8"
         >
           Drippit—Find Your Drip, Swipe Your Style.
         </motion.h2>
