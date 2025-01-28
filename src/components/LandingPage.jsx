@@ -86,12 +86,14 @@ export const LandingPage = () => {
             className="relative"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="font-Agraham text-md md:text-2xl text-[#b4b4b4]">
+
+            <img src="/logo.png" alt="logo" className='top-0 left-0 h-6 w-28 sm:h-10 sm:w-48' />
+            {/* <span className="font-Agraham text-md md:text-2xl text-[#b4b4b4]">
               Drippit
             </span>
             <span className="font-Agraham text-md md:text-2xl text-black absolute top-0 left-0">
               Dripp
-            </span>
+            </span> */}
           </motion.div>
 
           <div className="hidden md:flex gap-8">
