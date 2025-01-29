@@ -119,7 +119,7 @@ export const LandingPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-hidden">
       <motion.nav 
         style={{ opacity: navOpacity }}
         className="p-3 md:p-4 top-0 z-50 backdrop-blur-sm"
