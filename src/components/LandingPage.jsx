@@ -1,6 +1,7 @@
-import { useEffect,useState } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { motion, useAnimation, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+
+
+import { useEffect } from 'react';
+import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import ellipse804 from "/ellipse-804.svg";
 import ellipse805 from "/ellipse-805.svg";
 import ellipse806 from "/ellipse-806.svg";
@@ -14,48 +15,53 @@ import iphone2 from "/iphone-2.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 
-const features = [
-  {
-    title: "PERSONALIZATION",
-    heading: "Your Style, Your Way",
-    description: "Our AI learns your preferences and curates personalized fashion recommendations just for you."
+// Animation variants
+const fadeInUp = {
+  hidden: { 
+    opacity: 0, 
+    y: 20 
   },
-  {
-    title: "DISCOVERY",
-    heading: "Endless Fashion Inspiration",
-    description: "Explore new brands, styles, and trends with our intuitive swipe interface."
-  },
-  {
-    title: "COMMUNITY",
-    heading: "Join the Fashion Revolution",
-    description: "Connect with fellow fashion enthusiasts and share your unique style journey."
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.6,
+      type: "spring",
+      stiffness: 100
+    } 
   }
-];
-
-// Enhanced animation configurations
-const slideUp = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
 };
 
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+const staggerChildren = {
+  visible: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
 };
 
-const rotate3D = {
-  hidden: { opacity: 0, rotateX: 20, translateZ: -100 },
-  visible: { opacity: 1, rotateX: 0, translateZ: 0, transition: { duration: 0.8, ease: "easeOut" } }
+const buttonHover = {
+  scale: 1.05,
+  boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
+  transition: {
+    type: "spring",
+    stiffness: 400,
+    damping: 10
+  }
 };
 
 const InfiniteScrollPartners = ({ images }) => {
   return (
-    <div className="overflow-hidden bg-gray-900 py-8 md:py-12 lg:py-16">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="overflow-hidden bg-gray-900 py-8 md:py-12 lg:py-16"
+    >
       <motion.h3 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={slideUp}
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
         className="text-center text-gray-200 text-xs md:text-sm tracking-[5px] md:tracking-[7px] mb-8 md:mb-12 lg:mb-16"
       >
         TRUSTED PARTNERS
@@ -79,11 +85,14 @@ const InfiniteScrollPartners = ({ images }) => {
           {[...images, ...images].map((img, index) => (
             <motion.img
               key={index}
-              initial={{ scale: 0.8 }}
-              whileInView={{ scale: 1 }}
-              whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
-              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: 5,
+                transition: {
+                  type: "spring",
+                  stiffness: 300
+                }
+              }}
               src={img}
               alt="Partner"
               className="h-12 md:h-16 lg:h-20 object-contain"
@@ -91,64 +100,68 @@ const InfiniteScrollPartners = ({ images }) => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export const LandingPage = () => {
   const controls = useAnimation();
   const { scrollY } = useScroll();
-  const partnerImages = ["/image-27.png", "/image-26.png", "/image-25.png", "/image-24.png", "/image-23.png"];
+  const partnerImages = [image27, image26, image25, image24, image23];
 
-  // Parallax effects
-  const y1 = useTransform(scrollY, [0, 500], [0, 100]);
-  const y2 = useTransform(scrollY, [0, 500], [0, 50]);
-  const navOpacity = useTransform(scrollY, [0, 50], [1, 0.9]);
-  const heroScale = useTransform(scrollY, [0, 200], [1, 0.98]);
+  const navOpacity = useTransform(scrollY, [0, 50], [1, 0.8]);
+  const heroScale = useTransform(scrollY, [0, 200], [1, 0.95]);
+  const heroRotate = useTransform(scrollY, [0, 200], [0, -2]);
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
 
-  // Scroll-triggered animations
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 100) {
-      controls.start("visible");
-    }
-  });
-
-  const staggerChildren = {
-    visible: {
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  };
+  useEffect(() => {
+    controls.start({ opacity: 1, y: 0 });
+  }, []);
 
   return (
     <div className="min-h-screen bg-neutral-50">
       <motion.nav 
         style={{ opacity: navOpacity }}
-        className="bg-gray-25 p-3 md:p-4 sticky top-0 z-50 backdrop-blur-md"
+        className="p-3 md:p-4 top-0 z-50 backdrop-blur-sm"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 100, 
+          damping: 20 
+        }}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
           <motion.div 
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
             className="relative"
+            whileHover={{ 
+              scale: 1.05,
+              transition: {
+                type: "spring",
+                stiffness: 400
+              }
+            }}
           >
-            <img src="/logo.png" alt="logo" className='top-0 left-0 h-6 w-28 sm:h-10 sm:w-48' />
+            <img 
+              src="/logo.png" 
+              alt="logo" 
+              className='top-0 left-0 h-6 w-28 sm:h-10 sm:w-48'
+            />
           </motion.div>
 
           <div className="hidden md:flex gap-8">
             {['Features', 'FAQ'].map((item, index) => (
               <motion.span 
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={slideUp}
-                custom={index}
-                whileHover={{ scale: 1.1, y: -3 }}
-                className="text-gray-400 cursor-pointer font-medium"
+                key={item}
+                whileHover={{ 
+                  scale: 1.1, 
+                  color: '#000',
+                  transition: {
+                    type: "spring",
+                    stiffness: 300
+                  }
+                }}
+                className="text-gray-400 cursor-pointer"
               >
                 {item}
               </motion.span>
@@ -156,12 +169,9 @@ export const LandingPage = () => {
           </div>
 
           <motion.button 
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            whileHover={{ scale: 1.05, y: -2 }}
+            whileHover={buttonHover}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-gray-900 text-gray-25 px-4 md:px-7 py-2 md:py-4 rounded-xl md:rounded-2xl shadow-lg hover:shadow-xl"
+            className="bg-gray-900 text-gray-25 px-4 md:px-7 py-2 md:py-4 rounded-xl md:rounded-2xl"
           >
             <span className="font-semibold text-sm md:text-lg tracking-wide whitespace-nowrap">
               Get Early Access
@@ -169,10 +179,10 @@ export const LandingPage = () => {
           </motion.button>
         </div>
       </motion.nav>
-
+    
       <motion.section 
-        style={{ scale: heroScale }}
-        className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16"
+        style={{ scale: heroScale, rotateX: heroRotate, y }}
+        className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 perspective-1000"
       >
         <motion.div 
           initial="hidden"
@@ -181,37 +191,41 @@ export const LandingPage = () => {
           className="flex flex-col lg:flex-row gap-8 md:gap-12"
         >
           <motion.div 
-            variants={staggerChildren}
+            variants={fadeInUp}
             className="flex-1 space-y-6 md:space-y-8"
           >
-            <motion.div 
-              variants={slideUp}
-              className="space-y-2 overflow-hidden"
-            >
+            <div className="space-y-2">
               <motion.h2 
+                variants={fadeInUp}
                 className="text-2xl md:text-3xl tracking-wide md:tracking-wider"
-                variants={slideUp}
               >
                 Find Your Drip.
               </motion.h2>
               <motion.h1 
+                variants={fadeInUp}
                 className="font-Agraham text-xl md:text-3xl tracking-wide"
-                variants={rotate3D}
               >
                 Swipe, Match, Slay.
               </motion.h1>
-            </motion.div>
+            </div>
 
             <motion.p 
-              variants={slideUp}
+              variants={fadeInUp}
               className="text-gray-300 text-base md:text-lg tracking-wide md:tracking-wider leading-7"
             >
               Drippit is where fashion meets swiping discover your style one swipe at a time
             </motion.p>
 
             <motion.div 
-              variants={scaleIn}
+              variants={fadeInUp}
               className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 border border-gray-400 rounded-2xl p-2"
+              whileHover={{
+                boxShadow: "0px 5px 15px rgba(0,0,0,0.1)",
+                transition: {
+                  type: "spring",
+                  stiffness: 300
+                }
+              }}
             >
               <input
                 type="email"
@@ -219,7 +233,7 @@ export const LandingPage = () => {
                 className="w-full sm:flex-1 p-3 md:p-4 bg-transparent"
               />
               <motion.button 
-                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileHover={buttonHover}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto bg-gray-900 text-gray-25 px-4 md:px-6 py-3 md:py-4 rounded-xl whitespace-nowrap"
               >
@@ -228,173 +242,236 @@ export const LandingPage = () => {
             </motion.div>
 
             <motion.div 
-              variants={staggerChildren}
+              variants={fadeInUp}
               className="flex items-center gap-4"
             >
-              <motion.div 
-                variants={staggerChildren}
-                className="flex -space-x-3 md:-space-x-4"
-              >
-                {[804, 805, 806, 804, 805].map((num, index) => (
+              <div className="flex -space-x-3 md:-space-x-4">
+                {[ellipse804, ellipse805, ellipse806, ellipse804, ellipse805].map((img, index) => (
                   <motion.img 
                     key={index}
-                    variants={scaleIn}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    src={`/ellipse-${num}.svg`}
-                    alt="User"
-                    className="w-14 h-14 md:w-20 md:h-20 cursor-pointer hover:z-10"
+                    whileHover={{ 
+                      scale: 1.1,
+                      zIndex: 10,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300
+                      }
+                    }} 
+                    src={img} 
+                    alt="User" 
+                    className="w-14 h-14 md:w-20 md:h-20" 
                   />
                 ))}
-              </motion.div>
-              <motion.div variants={slideUp}>
-                <p className="text-lg md:text-xl text-gray-600">299+ Drippers</p>
-                <p className="text-base md:text-lg text-gray-300">On Waitlist</p>
-              </motion.div>
+              </div>
+              <div>
+                <motion.p 
+                  variants={fadeInUp}
+                  className="text-lg md:text-xl text-gray-600"
+                >
+                  299+ Drippers
+                </motion.p>
+                <motion.p 
+                  variants={fadeInUp}
+                  className="text-base md:text-lg text-gray-300"
+                >
+                  On Waitlist
+                </motion.p>
+              </div>
             </motion.div>
           </motion.div>
 
           <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            variants={staggerChildren}
             className="w-[359px] h-[522px] relative"
+            initial={{ rotate: -5 }}
+            animate={{ rotate: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
           >
             <motion.img
-              variants={slideUp}
-              style={{ y: y1 }}
               className="absolute w-[359px] h-[522px] top-0 left-0 object-cover"
               alt="Main"
               src='/iphone-frame.png'
+              whileHover={{ 
+                scale: 1.02,
+                transition: {
+                  type: "spring",
+                  stiffness: 200
+                }
+              }}
             />
             <motion.img
-              variants={scaleIn}
-              style={{ y: y2 }}
               className="absolute w-[166px] h-[449px] top-[6px] left-[2px] object-cover"
               alt="Iphone"
               src='/iphone-1.png'
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
             />
             <motion.img
-              variants={scaleIn}
-              style={{ y: y2 }}
               className="absolute w-[166px] h-[449px] top-[66px] left-[190px] object-cover"
               alt="Iphone"
               src='/iphone-2.png'
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
             />
           </motion.div>
         </motion.div>
       </motion.section>
-
-      <InfiniteScrollPartners images={partnerImages} />
-
-      {/* Enhanced Features Section */}
       <section className="max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-12 md:mb-16"
         >
           <motion.h3 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
             className="text-gray-300 text-xs md:text-sm tracking-[5px] md:tracking-[7px] mb-3 md:mb-4"
-            initial={{ letterSpacing: "0px" }}
-            animate={{ letterSpacing: "7px" }}
-            transition={{ duration: 1.5, repeat: Infinity, repeatType: "mirror" }}
           >
             FEATURES
           </motion.h3>
           <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
             className="text-gray-900 text-3xl md:text-4xl"
-            whileHover={{ scale: 1.05 }}
           >
             Why You'll Love Drippit
           </motion.h2>
         </motion.div>
 
         <div className="space-y-16 md:space-y-20 lg:space-y-24">
-          {features.map((feature, index) => (
+          {[
+            {
+              title: "SWIPE TO SHOP",
+              heading: "Shopping, but make it fun! 🔥",
+              description: "Say goodbye to boring scrolling. With Drippit, shopping feels like a game. Swipe left to pass, swipe right to save, and build your dream wardrobe in seconds.",
+              direction: "left"
+            },
+            {
+              title: "YOUR DREAM CLOSET",
+              heading: "Build the closet you've always wanted. 💅",
+              description: "Every swipe you love gets added to your wishlist, turning your style dreams into reality. Save your favorites, organize by vibe, and access your curated closet anytime.",
+              direction: "right"
+            },
+            {
+              title: "SMART AI SEARCH",
+              heading: "Fashion finds, powered by AI. 🤖✨",
+              description: "Looking for something specific? Let our AI search do the heavy lifting. Whether it's \"a black dress for a night out\" or \"trendy sneakers under $100,\" Drippit finds the perfect match.",
+              direction: "left"
+            }
+          ].map((feature, index) => (
             <motion.div
               key={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={staggerChildren}
+              initial={{ 
+                x: feature.direction === 'left' ? -50 : 50, 
+                opacity: 0 
+              }}
+              whileInView={{ 
+                x: 0, 
+                opacity: 1 
+              }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
               className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 md:gap-12 lg:gap-16 items-center`}
             >
               <motion.div 
-                variants={index % 2 === 0 ? { hidden: { x: -100 }, visible: { x: 0 } } : { hidden: { x: 100 }, visible: { x: 0 } }}
-                className="w-full lg:w-1/2 h-[320px] md:h-[400px] lg:h-[512px] rounded-xl md:rounded-2xl overflow-hidden"
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: {
+                    type: "spring",
+                    stiffness: 200
+                  }
+                }}
+                className="w-full lg:w-1/2 h-[320px] md:h-[400px] lg:h-[512px] bg-[#d9d9d9] rounded-xl md:rounded-2xl overflow-hidden"
               >
                 <motion.img
-                  src="https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg"
-                  alt="Feature"
-                  className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.05 }}
+                  initial={{ scale: 1.1 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ duration: 1.2 }}
+                  src="https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt=""
+                  className="w-full h-full object-cover rounded-xl md:rounded-2xl"
                 />
               </motion.div>
-              <motion.div 
-                variants={slideUp}
-                className="w-full lg:w-1/2 space-y-3 md:space-y-4"
-              >
+              <div className="w-full lg:w-1/2 space-y-3 md:space-y-4">
                 <motion.span 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
                   className="text-gray-700 text-xs tracking-[4px] md:tracking-[5px]"
-                  whileHover={{ scale: 1.05 }}
                 >
                   {feature.title}
                 </motion.span>
                 <motion.h3 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
                   className="text-3xl md:text-4xl tracking-wide md:tracking-wider"
-                  whileHover={{ skewX: -5 }}
                 >
                   {feature.heading}
                 </motion.h3>
                 <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
                   className="text-gray-300 text-lg md:text-xl leading-7"
-                  whileHover={{ x: 5 }}
                 >
                   {feature.description}
                 </motion.p>
-              </motion.div>
+              </div>
             </motion.div>
           ))}
         </div>
       </section>
-
-      {/* Enhanced CTA Section */}
       <motion.section
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="bg-gray-900 py-8 md:py-12 relative overflow-hidden"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="bg-gray-900 py-8 md:py-12"
       >
-        <motion.div 
-          className="absolute inset-0 opacity-10"
-          animate={{
-            background: [
-              'linear-gradient(45deg, #ff6b6b, #4ecdc4)',
-              'linear-gradient(45deg, #4ecdc4, #45b7d1)',
-              'linear-gradient(45deg, #45b7d1, #ff6b6b)'
-            ]
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-        <div className="max-w-xl mx-auto px-4 text-center relative">
+        <div className="max-w-xl mx-auto px-4 text-center">
           <motion.h2
+            variants={fadeInUp}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
             className="font-Agraham text-gray-25 text-md md:text-2xl mb-4 md:mb-6"
-            whileHover={{ scale: 1.05 }}
           >
             Don't Miss Out on the Drip 💧
           </motion.h2>
           <motion.p
+            variants={fadeInUp}
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
             className="text-gray-25 text-sm md:text-base mb-6 md:mb-8"
-            whileHover={{ skewY: 2 }}
           >
             Be the first to experience the future of shopping. Early access
             spots are filling fast!
           </motion.p>
 
           <motion.div
-            whileHover={{ scale: 1.02 }}
+            variants={fadeInUp}
+            whileHover={{ 
+              scale: 1.02,
+              transition: {
+                type: "spring",
+                stiffness: 300
+              }
+            }}
             className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0 border border-gray-25 rounded-xl md:rounded-2xl p-2"
           >
             <input
@@ -403,7 +480,7 @@ export const LandingPage = () => {
               className="w-full sm:flex-1 p-3 md:p-4 bg-transparent text-gray-25 placeholder:text-gray-25"
             />
             <motion.button
-              whileHover={{ scale: 1.05, rotate: 2 }}
+              whileHover={buttonHover}
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto bg-gray-25 text-gray-900 px-4 md:px-6 py-3 md:py-4 rounded-xl whitespace-nowrap"
             >
@@ -413,55 +490,69 @@ export const LandingPage = () => {
         </div>
       </motion.section>
 
-     {/* Animated Footer */}
-     <motion.footer
+      <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="py-12 md:py-16 text-center px-4 bg-gray-50"
+        className="py-12 md:py-16 text-center px-4"
       >
         <motion.h2 
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ 
+            scale: 1.05,
+            transition: {
+              type: "spring",
+              stiffness: 300
+            }
+          }}
           className="text-md md:text-2xl mb-6 md:mb-8"
         >
           Drippit—Find Your Drip, Swipe Your Style.
         </motion.h2>
         <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
           className="flex justify-center gap-6 md:gap-8 mb-6 md:mb-8"
-          variants={staggerChildren}
         >
-          {['/mdi-instagram.svg', '/mingcute-social-x-line.svg'].map((icon, index) => (
+          {[mdiInstagram, mingcuteSocialXLine].map((icon, index) => (
             <motion.img
               key={index}
-              variants={scaleIn}
-              whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: 5,
+                transition: {
+                  type: "spring",
+                  stiffness: 300
+                }
+              }}
               src={icon}
-              alt="Social"
+              alt={index === 0 ? "Instagram" : "X"}
               className="w-8 h-8 md:w-10 md:h-10 cursor-pointer"
             />
           ))}
         </motion.div>
-        <motion.div 
-          className="flex justify-center gap-4 md:gap-6 mb-4 md:mb-6 flex-wrap"
-          variants={staggerChildren}
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          whileHover={{ 
+            color: '#000',
+            transition: {
+              duration: 0.2
+            }
+          }}
+          className="text-gray-300 text-sm md:text-base mb-3 md:mb-4 cursor-pointer"
         >
-          {['Privacy Policy', 'Terms of Service', 'Contact Us'].map((item, index) => (
-            <motion.span
-              key={index}
-              variants={slideUp}
-              whileHover={{ scale: 1.1, y: -3 }}
-              className="text-gray-300 text-sm md:text-base cursor-pointer"
-            >
-              {item}
-            </motion.span>
-          ))}
-        </motion.div>
-        <motion.p
-          variants={slideUp}
-          className="text-gray-400 text-xs md:text-sm"
+          Privacy Policy | Terms of Service | Contact Us
+        </motion.p>
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-gray-600 text-sm md:text-base"
         >
-          © {new Date().getFullYear()} Drippit. All rights reserved.
+          Copyright 2025. All Rights Reserved
         </motion.p>
       </motion.footer>
     </div>
