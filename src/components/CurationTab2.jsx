@@ -9,11 +9,11 @@ import prop2 from "../assets/prop-banner-2.svg";
 import prop3 from "../assets/prop-banner-3.svg";
 import prop4 from "../assets/prop-banner-4.svg";
 
-const CurationTab = () => {
+const CurationTab2 = () => {
   return (
     <div className="w-full">
       {/* Desktop Layout - Hidden on mobile */}
-      <div className="hidden md:block relative max-w-7xl h-[359px] mx-auto bg-gray-50 rounded-xl mt-5">
+      <div className="hidden md:block relative max-w-7xl h-[217px] mx-auto bg-gray-50 rounded-xl mt-5">
         {/* Text Content */}
         <div className="absolute top-3 w-full flex justify-center items-center opacity-50">
           Not sure what to wear?
@@ -23,23 +23,21 @@ const CurationTab = () => {
         </div>
         <div className="absolute top-20 w-full flex justify-center items-center">
           <Link to="/curations">
-          <button className="border-2 border-black rounded-2xl px-5 py-4 cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
-            View Curations 👀
-            </button>
+          
           </Link>
         </div>
 
         {/* Decorative Elements */}
-        <img src={prop1} className="absolute left-20 top-6" alt="" />
-        <img src={prop2} className="absolute left-60 bottom-20" alt="" />
+        <img src={prop1} className="absolute left-20 bottom-6" alt="" />
+        <img src={prop2} className="absolute left-20 top-1" alt="" />
         <img src={prop3} className="absolute right-72 bottom-24" alt="" />
         <img src={prop4} className="absolute right-20 top-1" alt="" />
 
         {/* Banner Images */}
-        <img src={banner1} className="absolute left-0 bottom-0 object-cover" alt="" />
-        <img src={banner2} className="absolute left-64 bottom-0 object-cover" alt="" />
-        <img src={banner3} className="hidden lg:block absolute right-80 bottom-0 object-cover" alt="" />
-        <img src={banner4} className="absolute right-0 bottom-0 object-cover" alt="" />
+        <img src={banner1} className="absolute max-w-[200px] max-h-[150px] left-0 bottom-0 object-cover" alt="" />
+        <img src={banner2} className="absolute max-w-[150px] max-h-[120px] left-60 bottom-0 object-cover" alt="" />
+        <img src={banner3} className="hidden lg:block absolute max-w-[350px] max-h-[150px] right-80 bottom-0 object-cover" alt="" />
+        <img src={banner4} className="absolute max-w-[200px] max-h-[150px] right-0 bottom-0 object-cover" alt="" />
       </div>
 
       {/* Mobile Layout - Hidden on desktop */}
@@ -52,9 +50,7 @@ const CurationTab = () => {
           Drippit Curations brings together the hottest fashion trends in one place.
         </div>
         <div className="absolute top-24 w-full flex justify-center items-center mt-4">
-          <button className="border-2 border-black rounded-2xl px-4 py-3 text-sm cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
-            View Curations 👀
-          </button>
+          
         </div>
 
         {/* Decorative Elements - Mobile */}
@@ -84,4 +80,4 @@ const CurationTab = () => {
   );
 };
 
-export default CurationTab;
+export default CurationTab2;

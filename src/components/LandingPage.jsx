@@ -57,7 +57,7 @@ const InfiniteScrollPartners = ({ images }) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="overflow-hidden bg-gray-900 py-8 md:py-12 lg:py-16"
+      className="w-full overflow-hidden mt-10 bg-gray-900 py-4 md:py-8 lg:py-12 rounded-xl"
     >
       <motion.h3 
         initial={{ y: 20, opacity: 0 }}
@@ -126,11 +126,7 @@ export const LandingPage = () => {
         className="p-3 md:p-4 top-0 z-50 backdrop-blur-sm"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 100, 
-          damping: 20 
-        }}
+        
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
           <motion.div 
@@ -151,7 +147,7 @@ export const LandingPage = () => {
           </motion.div>
 
           <div className="hidden md:flex gap-8">
-            {['Features', 'FAQ'].map((item, index) => (
+            {['Features', 'Curations', 'FAQ'].map((item, index) => (
               <motion.span 
                 key={item}
                 whileHover={{ 
@@ -326,6 +322,8 @@ export const LandingPage = () => {
 
 
         {/* TRUSTED PARTNERS SECTION */}
+
+        <InfiniteScrollPartners images={partnerImages} />
         
 
         {/* BANNER SECTION */}
@@ -334,7 +332,7 @@ export const LandingPage = () => {
 
 
       </motion.section>
-      <section className="max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24">
+      <section className="max-w-7xl mx-auto mt-10 px-4 py-16 md:py-20 lg:py-24">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
