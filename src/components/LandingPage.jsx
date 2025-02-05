@@ -14,6 +14,7 @@ import iphone1 from "/iphone-1.png";
 import iphone2 from "/iphone-2.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
+import CurationTab from './CurationTab';
 
 // Animation variants
 const fadeInUp = {
@@ -320,6 +321,18 @@ export const LandingPage = () => {
             />
           </motion.div>
         </motion.div>
+
+
+
+
+        {/* TRUSTED PARTNERS SECTION */}
+        
+
+        {/* BANNER SECTION */}
+<CurationTab/>
+
+
+
       </motion.section>
       <section className="max-w-7xl mx-auto px-4 py-16 md:py-20 lg:py-24">
         <motion.div 

@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilroy-SemiBold:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilroy-Regular:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilroy-Medium:wght@400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +9,9 @@
 /* body {
   @apply bg-gray-100;
 } */
+
+
+
 
 
 

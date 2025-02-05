@@ -1,0 +1,128 @@
+.curationTabChild {
+    width: 100%;
+    height: 366px;
+    position: relative;
+    top: 3px;
+    left: -4px;
+    border-radius: 20px;
+    background: radial-gradient(50% 50% at 50% 50%, #fff, #f1f1f1);
+    border: 4px solid #fff;
+    box-sizing: border-box;
+    width: 1148px;
+    height: 367px;
+}
+.banner1 {
+    position: absolute;
+    top: 165px;
+    left: 0px;
+    width: 462.9px;
+    height: 200px;
+    object-fit: contain;
+}
+.banner4 {
+    position: absolute;
+    top: 131px;
+    left: 855.98px;
+    width: 368.5px;
+    height: 281px;
+    object-fit: cover;
+}
+.banner2 {
+    position: absolute;
+    top: 257px;
+    left: 219.16px;
+    width: 145.3px;
+    height: 122.8px;
+    object-fit: contain;
+}
+.banner3 {
+    position: absolute;
+    top: 187px;
+    left: 323.33px;
+    width: 493.3px;
+    height: 283px;
+    object-fit: cover;
+}
+.viewCurations {
+    position: relative;
+    letter-spacing: 0.5px;
+}
+.viewCurationsWrapper {
+    position: absolute;
+    top: 149.4px;
+    left: 475.4px;
+    border-radius: 11.37px;
+    border: 1.2px solid #030712;
+    box-sizing: border-box;
+    width: 186.2px;
+    height: 53.2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 25px;
+}
+.notSureWhat {
+    position: absolute;
+    top: 49px;
+    left: 480px;
+    letter-spacing: 0.5px;
+    font-family: Gilroy-Regular;
+    color: #374151;
+}
+.drippitCurationsBrings {
+    position: absolute;
+    top: 76px;
+    left: calc(50% - 283px);
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    font-family: Gilroy-Medium;
+    color: #000;
+    text-align: center;
+    display: inline-block;
+    width: 566px;
+}
+.prop3 {
+    position: absolute;
+    top: 200px;
+    left: 798px;
+    width: 42.3px;
+    height: 42px;
+    overflow: hidden;
+}
+.prop1 {
+    position: absolute;
+    top: 35px;
+    left: 124.81px;
+    width: 46.2px;
+    height: 46px;
+    overflow: hidden;
+}
+.prop4 {
+    position: absolute;
+    top: 0px;
+    left: 909.05px;
+    width: 158px;
+    height: 161px;
+    overflow: hidden;
+    object-fit: contain;
+}
+.prop2 {
+    position: absolute;
+    top: 137px;
+    left: 253.55px;
+    width: 152.9px;
+    height: 156px;
+    overflow: hidden;
+    object-fit: contain;
+}
+/* .curationTab {
+    width: 100%;
+    position: relative;
+    height: 366px;
+    text-align: left;
+    font-size: 16px;
+    color: #030712;
+    font-family: Gilroy-SemiBold;
+} */
+
