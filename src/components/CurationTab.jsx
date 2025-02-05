@@ -40,7 +40,7 @@ const CurationTab = () => {
       </div>
 
       {/* Mobile Layout - Hidden on desktop */}
-      <div className="md:hidden relative max-w-7xl h-[280px] mx-auto bg-gray-50 rounded-xl mt-5 px-4">
+      <div className="md:hidden relative max-w-7xl h-[280px] mx-auto bg-gray-50 rounded-xl mt-5 px-4 overflow-hidden">
         {/* Text Content - Mobile */}
         <div className="absolute top-3 w-full flex justify-center items-center opacity-50 text-sm">
           Not sure what to wear?
@@ -48,7 +48,7 @@ const CurationTab = () => {
         <div className="absolute top-10 w-full flex justify-center items-center text-center text-lg px-4">
           Drippit Curations brings together the hottest fashion trends in one place.
         </div>
-        <div className="absolute top-24 w-full flex justify-center items-center">
+        <div className="absolute top-24 w-full flex justify-center items-center mt-4">
           <button className="border-2 border-black rounded-2xl px-4 py-3 text-sm cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
             View Curations 👀
           </button>
@@ -59,20 +59,20 @@ const CurationTab = () => {
         <img src={prop4} className="absolute right-4 top-4 w-6" alt="" />
 
         {/* Banner Images - Mobile */}
-        <div className="absolute bottom-0 w-full flex justify-between">
+        <div className="">
           <img 
             src={banner1} 
-            className="w-1/3 object-cover" 
+            className="w-1/3 h-32 object-contain absolute -bottom-4 left-0" 
             alt="" 
           />
           <img 
             src={banner2} 
-            className="w-1/3 object-cover mx-2" 
+            className="w-1/3 h-32 object-contain absolute -bottom-4 left-28" 
             alt="" 
           />
           <img 
             src={banner4} 
-            className="w-1/3 object-cover" 
+            className="w-1/3 h-32 object-contain absolute -bottom-4 right-0" 
             alt="" 
           />
         </div>
