@@ -1,4 +1,4 @@
-import styles from "./CurationTab.module.css";
+
 import banner1 from "../assets/banner-1.png";
 import banner2 from "../assets/banner-2.png";
 import banner3 from "../assets/banner-3.png";
@@ -10,54 +10,74 @@ import prop4 from "../assets/prop-banner-4.svg";
 
 const CurationTab = () => {
   return (
-    <>
-      {/* <div className={styles.curationTabChild} />
-      <img className={styles.banner1} alt="" src={banner1} />
-      <img className={styles.banner4} alt="" src={banner4} />
-      <img className={styles.banner2} alt="" src={banner2} />
-      <img className={styles.banner3} alt="" src={banner3} />
-      <div className={styles.viewCurationsWrapper}>
-        <div className={styles.viewCurations}>View Curations 👀</div>
-      </div>
-      <div className={styles.notSureWhat}>Not sure what to wear?</div>
-      <div className={styles.drippitCurationsBrings}>
-        Drippit Curations brings together the hottest fashion trends in one
-        place.
-      </div>
-      <img className={styles.prop3} alt="" src={prop3} />
-      <img className={styles.prop1} alt="" src={prop1} />
-      <img className={styles.prop4} alt="" src={prop4} />
-      <img className={styles.prop2} alt="" src={prop2} /> */}
-
-      <div className="relative max-w-7xl h-[359px] mx-auto bg-gray-50 rounded-xl mt-5">
-        <div className="absolute top-3  w-full flex justify-center items-center opacity-50">
+    <div className="w-full">
+      {/* Desktop Layout - Hidden on mobile */}
+      <div className="hidden md:block relative max-w-7xl h-[359px] mx-auto bg-gray-50 rounded-xl mt-5">
+        {/* Text Content */}
+        <div className="absolute top-3 w-full flex justify-center items-center opacity-50">
           Not sure what to wear?
         </div>
         <div className="absolute top-10 w-full flex justify-center items-center text-2xl">
-          Drippit Curations brings together the hottest fashion trends in one
-          place.
+          Drippit Curations brings together the hottest fashion trends in one place.
         </div>
         <div className="absolute top-20 w-full flex justify-center items-center">
-          <div className="border-2 border-black rounded-2xl px-5 py-4 cursor-pointer">
+          <button className="border-2 border-black rounded-2xl px-5 py-4 cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
             View Curations 👀
-          </div>
+          </button>
         </div>
 
+        {/* Decorative Elements */}
         <img src={prop1} className="absolute left-20 top-6" alt="" />
         <img src={prop2} className="absolute left-60 bottom-20" alt="" />
         <img src={prop3} className="absolute right-72 bottom-24" alt="" />
         <img src={prop4} className="absolute right-20 top-1" alt="" />
 
-        <img
-          src={banner1}
-          className="absolute left-0 bottom-0 object-cover"
-          alt=""
-        />
+        {/* Banner Images */}
+        <img src={banner1} className="absolute left-0 bottom-0 object-cover" alt="" />
         <img src={banner2} className="absolute left-64 bottom-0 object-cover" alt="" />
         <img src={banner3} className="absolute right-80 bottom-0 object-cover" alt="" />
         <img src={banner4} className="absolute right-0 bottom-0 object-cover" alt="" />
       </div>
-    </>
+
+      {/* Mobile Layout - Hidden on desktop */}
+      <div className="md:hidden relative max-w-7xl h-[280px] mx-auto bg-gray-50 rounded-xl mt-5 px-4">
+        {/* Text Content - Mobile */}
+        <div className="absolute top-3 w-full flex justify-center items-center opacity-50 text-sm">
+          Not sure what to wear?
+        </div>
+        <div className="absolute top-10 w-full flex justify-center items-center text-center text-lg px-4">
+          Drippit Curations brings together the hottest fashion trends in one place.
+        </div>
+        <div className="absolute top-24 w-full flex justify-center items-center">
+          <button className="border-2 border-black rounded-2xl px-4 py-3 text-sm cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
+            View Curations 👀
+          </button>
+        </div>
+
+        {/* Decorative Elements - Mobile */}
+        <img src={prop2} className="absolute left-4 top-20 w-6" alt="" />
+        <img src={prop4} className="absolute right-4 top-4 w-6" alt="" />
+
+        {/* Banner Images - Mobile */}
+        <div className="absolute bottom-0 w-full flex justify-between">
+          <img 
+            src={banner1} 
+            className="w-1/3 object-cover" 
+            alt="" 
+          />
+          <img 
+            src={banner2} 
+            className="w-1/3 object-cover mx-2" 
+            alt="" 
+          />
+          <img 
+            src={banner4} 
+            className="w-1/3 object-cover" 
+            alt="" 
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
