@@ -1,19 +1,21 @@
 import CurationPage from "./components/CurationPage";
+import FAQ from "./components/FAQ";
+import InsideCurationPage from "./components/InsideCurationPage";
 import { LandingPage } from "./components/LandingPage";
-import { BrowserRouter as Router, Route, Routes } from "react-router";
-import SingleCuration from "./components/SingleCuration";
+import {HashRouter, Route, Routes } from "react-router";
 
 function App() {
   return (
-    <div>
-      <Router>
+    
+      <HashRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/curations" element={<CurationPage />} />
-          <Route path="/single" element={<SingleCuration />} />
+        <Route path="/single" element={<InsideCurationPage />} />
+        <Route path="/faq" element={<FAQ/>}/>
         </Routes>
-      </Router>
-    </div>
+      </HashRouter>
+   
   );
 }
 
