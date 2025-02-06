@@ -15,7 +15,7 @@ import iphone2 from "/iphone-2.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 import CurationTab from './CurationTab';
-
+import Card from "./card";
 // Animation variants
 const fadeInUp = {
   hidden: { 
@@ -123,6 +123,7 @@ export const LandingPage = () => {
   return (
     <div className="min-h-screen bg-neutral-50 overflow-hidden">
       
+    <main className="min-h-screen bg-white w-full h-full text-black">
     
       <motion.section 
         style={{ scale: heroScale, rotateX: heroRotate, y }}
@@ -305,95 +306,8 @@ export const LandingPage = () => {
           </motion.h2>
         </motion.div>
 
-        <div className="space-y-16 md:space-y-20 lg:space-y-24">
-          {[
-            {
-              title: "SWIPE TO SHOP",
-              heading: "Shopping, but make it fun! 🔥",
-              description: "Say goodbye to boring scrolling. With Drippit, shopping feels like a game. Swipe left to pass, swipe right to save, and build your dream wardrobe in seconds.",
-              direction: "left"
-            },
-            {
-              title: "YOUR DREAM CLOSET",
-              heading: "Build the closet you've always wanted. 💅",
-              description: "Every swipe you love gets added to your wishlist, turning your style dreams into reality. Save your favorites, organize by vibe, and access your curated closet anytime.",
-              direction: "right"
-            },
-            {
-              title: "SMART AI SEARCH",
-              heading: "Fashion finds, powered by AI. 🤖✨",
-              description: "Looking for something specific? Let our AI search do the heavy lifting. Whether it's \"a black dress for a night out\" or \"trendy sneakers under $100,\" Drippit finds the perfect match.",
-              direction: "left"
-            }
-          ].map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ 
-                x: feature.direction === 'left' ? -50 : 50, 
-                opacity: 0 
-              }}
-              whileInView={{ 
-                x: 0, 
-                opacity: 1 
-              }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ 
-                duration: 0.8,
-                type: "spring",
-                stiffness: 100,
-                damping: 20
-              }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 md:gap-12 lg:gap-16 items-center`}
-            >
-              <motion.div 
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: {
-                    type: "spring",
-                    stiffness: 200
-                  }
-                }}
-                className="w-full lg:w-1/2 h-[320px] md:h-[400px] lg:h-[512px] bg-[#d9d9d9] rounded-xl md:rounded-2xl overflow-hidden"
-              >
-                <motion.img
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 1.2 }}
-                  src="https://images.pexels.com/photos/789303/pexels-photo-789303.jpeg?auto=compress&cs=tinysrgb&w=600"
-                  alt=""
-                  className="w-full h-full object-cover rounded-xl md:rounded-2xl"
-                />
-              </motion.div>
-              <div className="w-full lg:w-1/2 space-y-3 md:space-y-4">
-                <motion.span 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-gray-700 text-xs tracking-[4px] md:tracking-[5px]"
-                >
-                  {feature.title}
-                </motion.span>
-                <motion.h3 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-3xl md:text-4xl tracking-wide md:tracking-wider"
-                >
-                  {feature.heading}
-                </motion.h3>
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="text-gray-300 text-lg md:text-xl leading-7"
-                >
-                  {feature.description}
-                </motion.p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
       </section>
+        <Card />
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -512,7 +426,7 @@ export const LandingPage = () => {
         >
           Copyright 2025. All Rights Reserved
         </motion.p>
-      </motion.footer>
+      </motion.footer></main>
     </div>
   );
 };
