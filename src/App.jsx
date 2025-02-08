@@ -10,7 +10,7 @@ function App() {
     
       <HashRouter>
         <Routes>
-        <Route path="/hero" element={<Hero />} />
+        {/* <Route path="/hero" element={<Hero />} /> */}
         <Route path="/" element={<LandingPage />} />
           <Route path="/curations" element={<CurationPage />} />
         <Route path="/single" element={<InsideCurationPage />} />
