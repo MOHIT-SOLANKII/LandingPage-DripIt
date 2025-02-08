@@ -3,12 +3,12 @@ import FAQ from "./components/FAQ";
 import Hero from "./components/Hero";
 import InsideCurationPage from "./components/InsideCurationPage";
 import {LandingPage}  from "./components/LandingPage";
-import {HashRouter, Route, Routes } from "react-router";
+import {BrowserRouter, Route, Routes } from "react-router";
 
 function App() {
   return (
     
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
         <Route path="/hero" element={<Hero />} />
         <Route path="/" element={<LandingPage />} />
@@ -16,7 +16,7 @@ function App() {
         <Route path="/single" element={<InsideCurationPage />} />
         <Route path="/faq" element={<FAQ/>}/>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
    
   );
 }
