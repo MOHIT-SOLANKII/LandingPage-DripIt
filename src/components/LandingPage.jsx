@@ -182,6 +182,7 @@ export const LandingPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto bg-gray-900 text-gray-25 px-4 md:px-6 py-3 md:py-4 rounded-xl whitespace-nowrap"
               >
+                
                 Get Early Access 🔥
               </motion.button>
             </motion.div>

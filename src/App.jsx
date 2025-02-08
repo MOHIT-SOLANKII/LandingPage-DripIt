@@ -3,7 +3,6 @@ import FAQ from "./components/FAQ";
 import InsideCurationPage from "./components/InsideCurationPage";
 import {LandingPage}  from "./components/LandingPage";
 import {HashRouter, Route, Routes } from "react-router";
-import Hero from './components/Hero';
 
 function App() {
   return (
