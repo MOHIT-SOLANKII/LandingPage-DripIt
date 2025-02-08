@@ -13,7 +13,7 @@ import image27 from "/image-27.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 import CurationTab from './CurationTab';
-import Card from './Card';
+import Card from './card';
 // Animation variants
 const fadeInUp = {
   hidden: { 
