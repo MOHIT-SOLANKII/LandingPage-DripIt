@@ -7,7 +7,7 @@ import { div } from "framer-motion/client";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <div>
-    {/* <Header /> */}
+    <Header />
     <App />
   </div>
 );

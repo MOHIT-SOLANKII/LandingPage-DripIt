@@ -10,8 +10,6 @@ import image24 from "/image-24.png";
 import image25 from "/image-25.png";
 import image26 from "/image-26.png";
 import image27 from "/image-27.png";
-import iphone1 from "/iphone-1.png";
-import iphone2 from "/iphone-2.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 import CurationTab from './CurationTab';

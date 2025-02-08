@@ -1,5 +1,6 @@
 import CurationPage from "./components/CurationPage";
 import FAQ from "./components/FAQ";
+import Hero from "./components/Hero";
 import InsideCurationPage from "./components/InsideCurationPage";
 import {LandingPage}  from "./components/LandingPage";
 import {HashRouter, Route, Routes } from "react-router";
@@ -9,7 +10,7 @@ function App() {
     
       <HashRouter>
         <Routes>
-        {/* <Route path="/hero" element={<Hero />} /> */}
+        <Route path="/hero" element={<Hero />} />
         <Route path="/" element={<LandingPage />} />
           <Route path="/curations" element={<CurationPage />} />
         <Route path="/single" element={<InsideCurationPage />} />
