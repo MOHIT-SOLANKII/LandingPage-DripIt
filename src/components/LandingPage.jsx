@@ -15,7 +15,7 @@ import iphone2 from "/iphone-2.png";
 import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 import CurationTab from './CurationTab';
-import Card from "./card";
+import Card from './Card';
 // Animation variants
 const fadeInUp = {
   hidden: { 
