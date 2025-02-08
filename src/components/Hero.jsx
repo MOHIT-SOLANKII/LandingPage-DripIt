@@ -18,17 +18,19 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 h-full">
           {/* Left Content */}
           <div className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 px-2">
-            <h2 className="text-lg text-gray-900">Find Your Drip.</h2>
-            <h1 className="text-2xl sm:text-3xl lg:text-3xl  mt-2 font-[Agraham]">
+            <h2 className="text-lg lg:text-2xl text-gray-900">
+              Find Your Drip.
+            </h2>
+            <h1 className="text-2xl sm:text-3xl lg:text-3xl  mt-10 mb-7 font-[Agraham]">
               Swipe. Match. Slay. 🚀
             </h1>
-            <p className="text-gray-300 max-w-md text-sm mt-4 opacity-75">
+            <p className="text-gray-300 max-w-md text-sm sm:text-lg lg:text-xl mt-8 mb-6 opacity-75">
               Drippit is where fashion meets swiping. Discover your style, one
               swipe at a time.
             </p>
 
             {/* Email Input Section */}
-            <div className="w-full max-w-md mt-8 flex gap-3">
+            <div className="w-full max-w-md mt-8 mb-6 flex gap-3">
               <div className="relative w-full">
                 <input
                   type="email"
@@ -50,7 +52,7 @@ const Hero = () => {
                 {dripper.map((dripper, i) => (
                   <div
                     key={i}
-                    className="w-12 h-12 rounded-full border-2 border-white"
+                    className="w-12 h-12 lg:w-20 lg:h-20 rounded-full border-2 border-white"
                   >
                     <div>
                       <img
@@ -64,7 +66,7 @@ const Hero = () => {
                 ))}
               </div>
               <p className="text-sm whitespace-nowrap">
-                <span className="font-semibold">299+ Drippers</span>{" "}
+                <span className="font-semibold opacity-80">299+ Drippers</span>{" "}
                 <span className="text-gray-400">On Waitlist</span>
               </p>
             </div>
@@ -73,21 +75,6 @@ const Hero = () => {
           {/* Right Content - Mockups */}
           <div className="w-full lg:w-1/2 order-1 lg:order-2">
             <div className="relative w-[400px] h-[400px] sm:w-[500px] sm:h-[500px] mx-auto flex justify-center items-center">
-              {/* First mockup - front one */}
-              {/* <div className="absolute left-[100px] sm:left-[150px] top-[200px] transform -translate-x-1/2 -translate-y-1/2 rotate-[1deg]">
-                <img 
-                  src={Mockup1} 
-                  alt="App mockup 1" 
-                  className="w-[200px] sm:w-[250px] lg:w-[250px] h-auto drop-shadow-2xl" 
-                />
-              </div>
-              <div className="absolute top-1/2 left-[200px] sm:left-[250px] transform -translate-x-1/4 -translate-y-1/3 rotate-[1deg]">
-                <img 
-                  src={Mockup2} 
-                  alt="App mockup 2" 
-                  className="w-[220px] sm:w-[300px] lg:w-[320px] h-auto drop-shadow-2xl" 
-                />
-              </div> */}
               <div>
                 <img
                   src="/Black.svg"

@@ -14,6 +14,7 @@ import mdiInstagram from "/mdi-instagram.svg";
 import mingcuteSocialXLine from "/mingcute-social-x-line.svg";
 import CurationTab from './CurationTab';
 import Card from './card';
+import Hero from './Hero';
 // Animation variants
 const fadeInUp = {
   hidden: { 
@@ -127,7 +128,7 @@ export const LandingPage = () => {
         style={{ scale: heroScale, rotateX: heroRotate, y }}
         className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16 perspective-1000"
       >
-        <motion.div 
+       {/* { <motion.div 
           initial="hidden"
           animate="visible"
           variants={staggerChildren}
@@ -263,7 +264,9 @@ export const LandingPage = () => {
               transition={{ delay: 0.5 }}
             />
           </motion.div>
-        </motion.div>
+        </motion.div>} */}
+          
+          <Hero/>
 
 
 
