@@ -1,13 +1,12 @@
 import CurationPage from "./components/CurationPage";
 import FAQ from "./components/FAQ";
-import Hero from "./components/Hero";
 import InsideCurationPage from "./components/InsideCurationPage";
 import {LandingPage}  from "./components/LandingPage";
 import {BrowserRouter, Route, Routes } from "react-router";
 
 function App() {
   return (
-    
+
       <BrowserRouter>
         <Routes>
         {/* <Route path="/hero" element={<Hero />} /> */}
@@ -17,7 +16,7 @@ function App() {
         <Route path="/faq" element={<FAQ/>}/>
         </Routes>
       </BrowserRouter>
-   
+
   );
 }
 

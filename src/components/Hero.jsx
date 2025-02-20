@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Mockup1 from "../assets/Mockup-1.svg";
 import Mockup2 from "../assets/Mockup-2.svg";
 import { ArrowRight } from "lucide-react";
+import axios from "axios";
 
 const dripper = [
   { image: "/Ellipse 804.svg" },
@@ -11,7 +12,27 @@ const dripper = [
   { image: "/Rectangle (1).svg" },
 ];
 
+const WAITLIST_URL = "https://v1-7poj.onrender.com/api/waitlist"
+
 const Hero = () => {
+  const [count, setCount] = React.useState(0);
+  const [email, setEmail] = React.useState("");
+  useEffect(() => {
+    axios.get(
+      WAITLIST_URL
+    ).then((response) => {
+      setCount(response.data.length);
+    })
+  }, [count]);
+  const handleClick = () => {
+    axios.post(
+      WAITLIST_URL,{
+        email
+      }
+    ).then(() => {
+      alert("You have been successfully added to the waitlist.");
+    })
+  }
   return (
     <div className="min-h-screen w-full bg-white rounded-xl p-2 sm:p-4 lg:p-8 overflow-hidden">
       <div className="container mx-auto">
@@ -34,10 +55,13 @@ const Hero = () => {
               <div className="relative w-full">
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email 💌"
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-gray-300"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-lg items-center gap-2 hidden sm:block">
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 rounded-lg items-center gap-2 hidden sm:block"
+                onClick={handleClick}>
                   <span>Get Early Access</span>
                 </button>
               </div>
@@ -66,7 +90,7 @@ const Hero = () => {
                 ))}
               </div>
               <p className="text-sm whitespace-nowrap">
-                <span className="font-semibold opacity-80">299+ Drippers</span>{" "}
+                <span className="font-semibold opacity-80">{count}+ Drippers</span>{" "}
                 <span className="text-gray-400">On Waitlist</span>
               </p>
             </div>
